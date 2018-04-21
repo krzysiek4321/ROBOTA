@@ -6,6 +6,7 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 /**
  *
@@ -20,6 +21,25 @@ public class Student {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     private String name;
+    private Long exp;
+
+    public Long getExp() {
+        return exp;
+    }
+
+    public void setExp(Long exp) {
+        this.exp = exp;
+    }
+
+    public LocalDate getDate_of_birth() {
+        return date_of_birth;
+    }
+
+    public void setDate_of_birth(LocalDate date_of_birth) {
+        this.date_of_birth = date_of_birth;
+    }
+
+    private LocalDate date_of_birth;
 
     public Long getId() {
         return id;
