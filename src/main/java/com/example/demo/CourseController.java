@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class CourseController {
+
     @Autowired
     CourseRepository repository;
     @RequestMapping("/user")

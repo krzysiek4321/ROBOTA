@@ -8,6 +8,7 @@ import java.io.File;
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "Tests")
 public class Test {
 
 
@@ -18,6 +19,7 @@ public class Test {
     private File exampleTest;
     @JsonIgnore
     @ManyToOne
+    @JoinColumn(name = "name")
     private Subject subject;
     public Long getId() {
         return id;

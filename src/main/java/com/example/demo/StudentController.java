@@ -33,8 +33,11 @@ public class StudentController {
             method=RequestMethod.POST,
             produces=MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE
-    )    @ResponseBody
+    )
+    @ResponseBody
     public Student insertStudent(@RequestBody Student student) {
+
         return repository.save(student);
     }
+
 }

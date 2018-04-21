@@ -9,14 +9,14 @@ import java.util.Set;
 @Entity
 public class Course {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     @JsonIgnore
-    @ManyToMany
-    private Set<Student> students=new HashSet<>();
+    @OneToMany
+    private Set<Student> students = new HashSet<>();
     @OneToMany(mappedBy = "id")
-    private Set<Subject> subjects=new HashSet<>();
+    private Set<Subject> subjects = new HashSet<>();
 
     public Long getId() {
         return id;
