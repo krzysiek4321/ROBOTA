@@ -5,6 +5,9 @@
  */
 package com.example.demo.model;
 
+import org.springframework.beans.factory.annotation.Required;
+import org.springframework.beans.factory.annotation.Value;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -21,7 +24,9 @@ public class Student {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     private String name;
-    private Long exp;
+    //@Value("#{Student.exp ?:0}")
+    private Long exp = 0L;
+    private LocalDate date_of_birth;
 
     public Long getExp() {
         return exp;
@@ -38,8 +43,6 @@ public class Student {
     public void setDate_of_birth(LocalDate date_of_birth) {
         this.date_of_birth = date_of_birth;
     }
-
-    private LocalDate date_of_birth;
 
     public Long getId() {
         return id;
