@@ -1,13 +1,24 @@
 package com.example.demo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
+import java.io.File;
 import java.time.LocalDate;
 
 @Entity
 public class Test {
+
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Long id;
+    private LocalDate date;
+    private File exampleTest;
+    @JsonIgnore
+    @ManyToOne
+    private Subject subject;
     public Long getId() {
         return id;
     }
@@ -23,9 +34,11 @@ public class Test {
     public void setDate(LocalDate date) {
         this.date = date;
     }
+    public File getExampleTest() {
+        return exampleTest;
+    }
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long id;
-    private LocalDate date;
+    public void setExampleTest(File exampleTest) {
+        this.exampleTest = exampleTest;
+    }
 }

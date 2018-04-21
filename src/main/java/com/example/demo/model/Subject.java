@@ -1,9 +1,10 @@
 package com.example.demo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Subject {
@@ -11,5 +12,9 @@ public class Subject {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     private String name;
-    private Test[] tests;
+    @OneToMany(mappedBy = "subject")
+    private Set<Test> tests=new HashSet<>();
+    @JsonIgnore
+    @ManyToOne
+    private Course course;
 }

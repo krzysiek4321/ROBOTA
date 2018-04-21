@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -26,7 +28,8 @@ public class Student {
     private String name;
     private Long exp = 0L;
     private LocalDate date_of_birth;
-    private Course[] courses;
+    @OneToMany(mappedBy = "student")
+    private Set<Course> courses=new HashSet<>();
 
     public Long getExp() {
         return exp;
