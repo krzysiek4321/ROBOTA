@@ -9,12 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
-
 @Controller
 public class StudentController {
 
     @Autowired
     StudentRepository repository;
+
 
     @RequestMapping("/hello")
     public ModelAndView hello(ModelAndView modelAndView, @RequestParam(value="name", required=false, defaultValue="World") String name) {
@@ -22,6 +22,7 @@ public class StudentController {
         modelAndView.getModel().put("students", repository.findAll());
         return modelAndView;
     }
+
     @GetMapping("id=/{id}")
     @ResponseBody
     public Student getStudent(@PathVariable String id) {

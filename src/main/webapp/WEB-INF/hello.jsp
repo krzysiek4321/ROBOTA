@@ -8,7 +8,7 @@
 <body>
 
 <c:forEach items="${students}" var="item">
-    ${item.id} ${item.name}<br>
+     ${item.name} <input type="button"  onclick="location.href='/user?=${item.id}'" value="Log in" ><br>
 
 </c:forEach>
 </body>
