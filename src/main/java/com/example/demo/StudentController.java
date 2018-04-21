@@ -7,6 +7,8 @@ import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.Model;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class StudentController {
@@ -14,7 +16,13 @@ public class StudentController {
     @Autowired
     StudentRepository repository;
 
-    @GetMapping("/{id}")
+    @RequestMapping("/hello")
+    public ModelAndView hello(ModelAndView modelAndView, @RequestParam(value="name", required=false, defaultValue="World") String name) {
+        modelAndView.setViewName("hello");
+        modelAndView.getModel().put("students", repository.findAll());
+        return modelAndView;
+    }
+    @GetMapping("id=/{id}")
     @ResponseBody
     public Student getStudent(@PathVariable String id) {
         return repository.findById(Long.parseLong(id)).get();
