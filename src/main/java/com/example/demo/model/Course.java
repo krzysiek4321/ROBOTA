@@ -13,8 +13,8 @@ public class Course {
     private Long id;
     private String name;
     @JsonIgnore
-    @ManyToOne
-    private Student student;
+    @ManyToMany
+    private Set<Student> students=new HashSet<>();
     @OneToMany(mappedBy = "id")
     private Set<Subject> subjects=new HashSet<>();
 
@@ -34,12 +34,12 @@ public class Course {
         this.name = name;
     }
 
-    public Student getStudent() {
-        return student;
+    public Set<Student> getStudents() {
+        return students;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setStudent(Set<Student> students) {
+        this.students = students;
     }
 
     public Set<Subject> getSubjects() {

@@ -28,7 +28,16 @@ public class Student {
     private String name;
     private Long exp = 0L;
     private LocalDate date_of_birth;
-    @OneToMany(mappedBy = "student")
+
+    public Set<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
+    }
+
+    @ManyToMany
     private Set<Course> courses=new HashSet<>();
 
     public Long getExp() {
