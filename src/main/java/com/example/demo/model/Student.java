@@ -24,9 +24,9 @@ public class Student {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     private String name;
-    //@Value("#{Student.exp ?:0}")
     private Long exp = 0L;
     private LocalDate date_of_birth;
+    private Course[] courses;
 
     public Long getExp() {
         return exp;
